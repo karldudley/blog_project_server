@@ -18,7 +18,7 @@ app.get('/posts', (req, res) => {
 app.get('/posts/:id', (req, res) => {
     
     if (data.posts[req.params.id-1]) {
-        res.send(data.posts[req.params.id-1])
+        res.json(data.posts[req.params.id-1])
        
     } else {
             res.status(404).send({error: `Choose a number between 1 and ${data.length}`})
