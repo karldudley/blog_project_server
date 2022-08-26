@@ -1,9 +1,18 @@
 {
+    "general": {
+        "squadname": "The Granny Smiths"
+    },
+
     "posts": [
         {
             "id": "1",
-            "message": "Hellow World",
-            "comment": "Nice!"
+            "message": "Hello World"
+        },
+        {
+            "id": "2",
+            "message": "Hello There"
+
         }
     ]
 }
+
