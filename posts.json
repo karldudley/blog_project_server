@@ -1,35 +1,64 @@
 {
-    "general": {
-        "squadName": "The Granny Smiths"
+  "general": {
+      "squadName": "The Granny Smiths"
     },
 
-    "posts": [
-      {
-        "id": "1",
-        "title": "Hello World",
-        "description": "text",
-        "content": "text",
-        "gif": "url",
-        "comments": [
-            {
-                "id": "1",
-                "comment": "text"
-            }
+  "posts": [
+    {
+      "id": "1",
+      "title": "Hello World",
+      "description": "text",
+      "content": "text",
+      "gif": "url",
+      "comments": [
+          {
+            "id": "1",
+            "comment": "text"
+          },
+          {
+            "id": "2",
+            "comment": "text"
+          },
+          {
+            "id": "3",
+            "comment": "text"
+          }
         ]
     },
     {
-        "id": "2",
-        "title": "Hello World",
-        "description": "text",
-        "content": "text",
-        "gif": "url",
-        "comments": [
-            {
-                "id": "2",
-                "comment": "text"
-            }
+      "id": "2",
+      "title": "Hello World",
+      "description": "text",
+      "content": "text",
+      "gif": "url",
+      "comments": [
+        {
+          "id": "1",
+          "comment": "text"
+        },
+        {
+          "id": "2",
+           "comment": "text"
+         }
         ]
-    }
+    },
+    {
+      "id": "3",
+      "title": "Hello World",
+      "description": "text",
+      "content": "text",
+      "gif": "url",
+      "comments": [
+        {
+          "id": "1",
+          "comment": "text"
+        },
+        {
+          "id": "2",
+          "comment": "text"
+        }
+      ]
+  }
   ]
 }
 
