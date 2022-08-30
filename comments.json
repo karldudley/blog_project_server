@@ -5,8 +5,8 @@
 
     "comments": [
         {
+            "postId": "1",
             "id": "1",
-            "commentId": "1",
             "comment": "Nice!"
         }
     ]

@@ -4,17 +4,33 @@
     },
 
     "posts": [
-        {
-            "id": "1",
-            "message": "Hello World"
-            
-        },
-        {
-            "id": "2",
-            "message": "Hello World"
-            
-    
-        }
-    ]
+      {
+        "id": "1",
+        "title": "Hello World",
+        "description": "text",
+        "content": "text",
+        "gif": "url",
+        "comments": [
+            {
+                "id": "1",
+                "comment": "text"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Hello World",
+        "description": "text",
+        "content": "text",
+        "gif": "url",
+        "comments": [
+            {
+                "id": "2",
+                "comment": "text"
+            }
+        ]
+    }
+  ]
 }
+
 
