@@ -25,10 +25,12 @@ app.get('/posts/:id', (req, res) => {
         }
     })
 
+
 app.post('/posts', (req, res) => {
 
-    const newMessage = req.body.message
-    const newPostId = (parseInt(data.posts[data.posts.length - 1].id)+1).toString()
+    const newPostId = (parseInt(data.posts[data.posts.length - 1].id)+1).toString();
+    const newMessage = req.body.message;
+    
 
     let newPost = {id: newPostId, message: newMessage}
 

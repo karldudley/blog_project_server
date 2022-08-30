@@ -5,30 +5,15 @@
 
     "posts": [
         {
-            "id": 1,
-            "title": "Hello World",
-            "description": "text",
-            "content": "text",
-            "gif": "url",
-            "comments": [
-                {
-                    "commentId": 1,
-                    "comment": "text"
-                }
-            ]
+            "id": "1",
+            "message": "Hello World"
+            
         },
         {
-            "id": 2,
-            "title": "Hello World",
-            "description": "text",
-            "content": "text",
-            "gif": "url",
-            "comments": [
-                {
-                    "commentId": 2,
-                    "comment": "text"
-                }
-            ]
+            "id": "2",
+            "message": "Hello World"
+            
+    
         }
     ]
 }
