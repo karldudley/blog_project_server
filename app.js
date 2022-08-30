@@ -22,8 +22,10 @@ app.get('/posts/:id', (req, res) => {
         res.json(data.posts[req.params.id-1])
        
     } else {
-            res.status(404).send({error: `Choose a number between 1 and ${data.posts.length}`})
-        }
+
+      res.status(404).send({error: `Choose a number between 1 and ${data.posts.length}`})
+
+      }
     })
 
 
@@ -49,18 +51,9 @@ app.post('/posts', (req, res) => {
 
 app.get('/posts/:id/comments', (req, res) => {
 
-
-  if (data.posts[req.params.id-1].comments){
-     
     res.json(data.posts[req.params.id-1].comments)
     
-  } else {
-
-    res.status(404).send({error: `Choose a number between 1 and ${data.posts.length}`})
-
-  }
-
-})
+  })
 
 app.get('/posts/:postId/comments/:commentId', (req, res) => {
 
@@ -90,12 +83,21 @@ app.post('/posts/:id/comments', (req, res) => {
 
 app.delete('/posts/:id', (req, res) => {
   
-  const post = data.posts[req.params.id-1];
-  
-  console.log(post)
+  const postIdx = parseInt(req.params.id) -1
+
+  data.posts.splice(postIdx,1)
 
   res.status(204).send();
 })
 
+app.delete('/posts/:postId/comments/:commentId', (req, res) => {
+  
+  const postIdx = parseInt(req.params.postId) - 1
+  const commentIdx = parseInt(data.posts[postIdx].comments[req.params.commentId-1])
+
+  data.posts[postIdx].comments.splice(commentIdx,1)
+
+  res.status(204).send();
+})
 
 module.exports = app;
