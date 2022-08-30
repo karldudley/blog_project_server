@@ -1,17 +1,34 @@
 {
     "general": {
-        "squadname": "The Granny Smiths"
+        "squadName": "The Granny Smiths"
     },
 
     "posts": [
         {
-            "id": "1",
-            "message": "Hello World"
+            "id": 1,
+            "title": "Hello World",
+            "description": "text",
+            "content": "text",
+            "gif": "url",
+            "comments": [
+                {
+                    "commentId": 1,
+                    "comment": "text"
+                }
+            ]
         },
         {
-            "id": "2",
-            "message": "Hello There"
-
+            "id": 2,
+            "title": "Hello World",
+            "description": "text",
+            "content": "text",
+            "gif": "url",
+            "comments": [
+                {
+                    "commentId": 2,
+                    "comment": "text"
+                }
+            ]
         }
     ]
 }
