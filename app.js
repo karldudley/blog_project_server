@@ -34,9 +34,10 @@ app.post('/posts', (req, res) => {
     const newDesc = req.body.description;
     const newContent = req.body.content;
     const newGif = req.body.gif;
+    const comments = [];
 
 
-    let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif}
+    let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, comments: comments}
 
     // {"id": "newPostId", "title": "newTitle", "description": "newDesc", "content": "newContent", "gif": "newGif"}
 
