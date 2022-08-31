@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('../app')
+const app = require('../appTest')
 
 describe('api server', () => {
 
@@ -96,14 +96,14 @@ describe('api server', () => {
     .expect(404, done)
   })
 
-  //test POST for posts and comments
+  // test POST for posts and comments
   it('It responds to POST /posts with status 201', (done) => {
     request(api)
     .post('/posts')
     .send (testPost)
     .set('Accept', /application\/json/)
     .expect(201)
-    .expect({id: '3', ...testPost, emojiCount: [{up:0,down:0,favourite:0}], comments: []},done)
+    .expect({id: '3', ...testPost, emojis: [{up:0,down:0,favourite:0}], comments: []},done)
   })
 
   it('It responds to POST /posts/:id/comments with status 201', (done) => {
