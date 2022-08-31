@@ -66,7 +66,7 @@ app.delete('/posts/:id', (req, res) => {
   data.posts.splice(postIdx,1)
     
   for (i=0; i<data.length; i++){
-      data.posts[i].id = i+1;
+      data.posts[i].id = (i+1).toString();
   }
 
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
