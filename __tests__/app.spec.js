@@ -24,6 +24,7 @@ describe('api server', () => {
         console.log('Stopping test server')
         api.close(done);
   })
+
   it('It responds to GET / with 200 status',(done) => {
 
         request(api)
@@ -31,6 +32,7 @@ describe('api server', () => {
           .expect(200,done)
   })
 
+  // test GET for Posts
    it('It responds to GET /posts with 200status', (done) => {
 
         request(api)
@@ -48,31 +50,17 @@ describe('api server', () => {
               "description": "text",
               "content": "text",
               "gif": "url",
-              "emojiCount": [
+              "emojis": [
                 {
-                  "up": 0
-                },
-                {
-                  "down": 0
-                },
-                {
+                  "up": 0,
+                  "down": 0,
                   "favourite": 0
                 }
               ],
-              "comments": [
-                  {
-                    "id": "1",
-                    "comment": "text"
-                  },
-                  {
-                    "id": "2",
-                    "comment": "text"
-                  },
-                  {
-                    "id": "3",
-                    "comment": "text"
-                  }
-                ]
+              "comments": [{
+                "id": "1",
+                "comment": "text"
+              }]
             }, done)
   })
 
@@ -83,6 +71,7 @@ describe('api server', () => {
     .expect(404, done)
   })
 
+  //test GET for Comments
    it('It responds to GET /posts/:id/comments with 200 status', (done) => {
      request(api)
          .get('/posts/1/comments')
@@ -107,26 +96,28 @@ describe('api server', () => {
     .expect(404, done)
   })
 
+  //test POST for posts and comments
   it('It responds to POST /posts with status 201', (done) => {
     request(api)
     .post('/posts')
     .send (testPost)
     .set('Accept', /application\/json/)
     .expect(201)
-    .expect({id: '4', ...testPost, emojiCount: [{up:0},{down:0},{favourite:0}], comments: []},done)
+    .expect({id: '3', ...testPost, emojiCount: [{up:0,down:0,favourite:0}], comments: []},done)
   })
 
   it('It responds to POST /posts/:id/comments with status 201', (done) => {
 
     request(api)
-    .post('/posts/2/comments')
+    .post('/posts/1/comments')
     .send (testComment)
     .set('Accept', /application\/json/)
     .expect(201)
-    .expect({id: '4', ...testComment},done)
+    .expect({id: "2", ...testComment},done)
 
   })
 
+  //test DELETE for Posts and Comments
  it('It responds to DELETE /post/:id with status 204', (done) => {
 
     request (api)
@@ -141,4 +132,60 @@ describe('api server', () => {
   .expect(204,done)
 })
 
+//test GET and POST for Emojis
+
+it('It responds to GET /posts/:id/emojis with 200 status', (done) => {
+
+  request(api)
+      .get('/posts/1/emojis')
+      .expect(200,done)
+})
+
+it('It responds to POST /posts/:id/emojis/UP with status 201 and count = 1', (done) => {
+
+    request(api)
+    .post('/posts/1/emojis/up')
+    .set('Accept', /application\/json/)
+    .expect(201)
+    .expect({
+      "up": 1,
+      "down": 0,
+      "favourite": 0
+    },done)
+})
+
+it('It responds to POST /posts/:id/emojis/DOWN with status 201 and count = 1', (done) => {
+
+  request(api)
+  .post('/posts/1/emojis/down')
+  .set('Accept', /application\/json/)
+  .expect(201)
+  .expect({
+    "up": 1,
+    "down": 1,
+    "favourite": 0
+  },done)
+})
+
+it('It responds to POST /posts/:id/emojis/FAVOURITE with status 201 and count = 1', (done) => {
+
+  request(api)
+  .post('/posts/1/emojis/favourite')
+  .set('Accept', /application\/json/)
+  .expect(201)
+  .expect({
+    "up": 1,
+    "down": 1,
+    "favourite": 1
+  },done)
+})
+
+it('It responds to inexistent POST emojis/:id with status 404', (done) => {
+
+  request(api)
+  .post('/posts/1/emojis/any')
+  .set('Accept', /application\/json/)
+  .expect(404, done)
+
+})
 })
