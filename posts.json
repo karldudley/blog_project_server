@@ -10,6 +10,17 @@
       "description": "text",
       "content": "text",
       "gif": "url",
+      "emojiCount": [
+        {
+          "up": 0
+        },
+        {
+          "down": 0
+        },
+        {
+          "favourite": 0
+        }
+      ],
       "comments": [
           {
             "id": "1",
@@ -26,20 +37,35 @@
         ]
     },
     {
-      "id": "2",
+      "id": "3",
       "title": "Hello World",
       "description": "text",
       "content": "text",
       "gif": "url",
-      "comments": [
+      "emojiCount": [
         {
-          "id": "1",
-          "comment": "text"
+          "up": 0
         },
         {
-          "id": "2",
-           "comment": "text"
-         }
+          "down": 0
+        },
+        {
+          "favourite": 0
+        }
+      ],
+      "comments": [
+          {
+            "id": "1",
+            "comment": "text"
+          },
+          {
+            "id": "2",
+            "comment": "text"
+          },
+          {
+            "id": "3",
+            "comment": "text"
+          }
         ]
     },
     {
@@ -48,17 +74,32 @@
       "description": "text",
       "content": "text",
       "gif": "url",
-      "comments": [
+      "emojiCount": [
         {
-          "id": "1",
-          "comment": "text"
+          "up": 0
         },
         {
-          "id": "2",
-          "comment": "text"
+          "down": 0
+        },
+        {
+          "favourite": 0
         }
-      ]
-  }
+      ],
+      "comments": [
+          {
+            "id": "1",
+            "comment": "text"
+          },
+          {
+            "id": "2",
+            "comment": "text"
+          },
+          {
+            "id": "3",
+            "comment": "text"
+          }
+        ]
+    }
   ]
 }
 
