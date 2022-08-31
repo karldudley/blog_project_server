@@ -64,8 +64,9 @@ app.delete('/posts/:id', (req, res) => {
   const postIdx = parseInt(req.params.id) -1
 
   data.posts.splice(postIdx,1)
-    
-  for (i=0; i<data.length; i++){
+  
+  //Added by KD to refactor ID's after a deletion
+  for (i=0; i<data.posts.length; i++){
       data.posts[i].id = (i+1).toString();
   }
 
