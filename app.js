@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const fs = require('fs');
 
 app.use(cors())
 app.use(express.json())
 
+const fileName = './posts.json'
 const data = require('./posts.json')
 
 
@@ -36,14 +38,21 @@ app.post('/posts', (req, res) => {
     const newDesc = req.body.description;
     const newContent = req.body.content;
     const newGif = req.body.gif;
+    const emojiCount = [{"up":0}, {"down": 0}, {"favourite": 0}];
     const comments = [];
 
 
-    let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, comments: comments}
+    let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, emojiCount: emojiCount, comments: comments}
 
     // {"id": "newPostId", "title": "newTitle", "description": "newDesc", "content": "newContent", "gif": "newGif"}
 
     data.posts.push(newPost)
+    
+    fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err) {
+      if (err) return console.log(err);
+      console.log(JSON.stringify(data));
+      console.log('writing to ' + fileName);
+    });
 
     res.status(201).send(newPost)
 
@@ -77,7 +86,13 @@ app.post('/posts/:id/comments', (req, res) => {
 
   data.posts[req.params.id-1].comments.push(newComment)
 
-    res.status(201).send(newComment)
+  fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(data));
+    console.log('writing to ' + fileName);
+  });
+
+  res.status(201).send(newComment)
 
 })
 
