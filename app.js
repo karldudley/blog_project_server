@@ -43,7 +43,7 @@ app.post('/posts', (req, res) => {
     const comments = [];
 
 
-    let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, emojiCount: emojiCount, comments: comments}
+    let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, emojis: emojis, comments: comments}
 
     // {"id": "newPostId", "title": "newTitle", "description": "newDesc", "content": "newContent", "gif": "newGif"}
 
@@ -104,11 +104,11 @@ app.post('/posts/:id/comments', (req, res) => {
 
   data.posts[req.params.id-1].comments.push(newComment)
 
-  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
-    if (err) return console.log(err);
-    console.log(JSON.stringify(data, null, 2));
-    console.log('writing to ' + fileName);
-  });
+  // fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
+  //   if (err) return console.log(err);
+  //   console.log(JSON.stringify(data, null, 2));
+  //   console.log('writing to ' + fileName);
+  // });
 
   res.status(201).send(newComment)
 
