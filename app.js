@@ -39,7 +39,7 @@ app.post('/posts', (req, res) => {
     const newDesc = req.body.description;
     const newContent = req.body.content;
     const newGif = req.body.gif;
-    const emojiCount = [{"up":0}, {"down": 0}, {"favourite": 0}];
+    const emojiCount = [{"up":0, "down": 0, "favourite": 0}];
     const comments = [];
 
 
@@ -130,7 +130,6 @@ app.delete('/posts/:postId/comments/:commentId', (req, res) => {
   res.status(204).send();
 })
 
-
 //emoji functions
 
 app.get('/posts/:id/emojis', (req, res) => {
@@ -143,19 +142,25 @@ app.get('/posts/:id/emojis', (req, res) => {
 app.post('/posts/:postId/emojis/:emojiId', (req, res) => {
   
   let count = data.posts[req.params.postId-1].emojis[0];
+  const emojiId = req.params.emojiId;
 
-  if (req.params.emojiId === 'up') {
+if (emojiId === 'up' || emojiId === 'down' || emojiId == 'favourite') {
+  
+  if (emojiId === 'up') {
 
     count.up += 1
     
-  } else if (req.params.emojiId === 'down') {
+  } else if (emojiId === 'down') {
 
     count.down += 1 
   
-  } else if (req.params.emojiId === 'favourite') {
+  } else if (emojiId === 'favourite') {
 
-      count.favourite += 1
+    count.favourite += 1
 
+  }
+} else {
+    res.status(404).send({error: `Choose a between [up, down or favourite]`})
   }
 
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
