@@ -34,12 +34,12 @@ app.get('/posts/:id', (req, res) => {
 
 app.post('/posts', (req, res) => {
     //Added by KD to deal with no posts
-    if (data.posts.length) {
-        const newPostId = (parseInt(data.posts[data.posts.length - 1].id)+1).toString();
-    } else {
-        const newPostId = "1";
-    }
-    
+    //if (data.posts.length) {
+    //    const newPostId = (parseInt(data.posts[data.posts.length - 1].id)+1).toString();
+    //} else {
+    //    const newPostId = "1";
+    //}
+    const newPostId = "1";
     const newTitle = req.body.title;
     const newDesc = req.body.description;
     const newContent = req.body.content;
