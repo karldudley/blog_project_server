@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
+//posts functions
+
 app.get('/posts', (req, res) => {
     res.json(data)
 })
@@ -29,7 +31,6 @@ app.get('/posts/:id', (req, res) => {
 
       }
     })
-
 
 app.post('/posts', (req, res) => {
 
@@ -48,15 +49,32 @@ app.post('/posts', (req, res) => {
 
     data.posts.push(newPost)
     
-    fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err) {
+    fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
       if (err) return console.log(err);
-      console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data, null, 2));
       console.log('writing to ' + fileName);
     });
 
     res.status(201).send(newPost)
 
 })
+
+app.delete('/posts/:id', (req, res) => {
+  
+  const postIdx = parseInt(req.params.id) -1
+
+  data.posts.splice(postIdx,1)
+
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(data, null, 2));
+    console.log('writing to ' + fileName);
+  });
+
+  res.status(204).send();
+})
+
+//comments functions
 
 app.get('/posts/:id/comments', (req, res) => {
 
@@ -86,29 +104,14 @@ app.post('/posts/:id/comments', (req, res) => {
 
   data.posts[req.params.id-1].comments.push(newComment)
 
-  fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err) {
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
     if (err) return console.log(err);
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data, null, 2));
     console.log('writing to ' + fileName);
   });
 
   res.status(201).send(newComment)
 
-})
-
-app.delete('/posts/:id', (req, res) => {
-  
-  const postIdx = parseInt(req.params.id) -1
-
-  data.posts.splice(postIdx,1)
-
-  fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err) {
-    if (err) return console.log(err);
-    console.log(JSON.stringify(data));
-    console.log('writing to ' + fileName);
-  });
-
-  res.status(204).send();
 })
 
 app.delete('/posts/:postId/comments/:commentId', (req, res) => {
@@ -118,13 +121,51 @@ app.delete('/posts/:postId/comments/:commentId', (req, res) => {
 
   data.posts[postIdx].comments.splice(commentIdx,1)
 
-  fs.writeFile(fileName, JSON.stringify(data), function writeJSON(err) {
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
     if (err) return console.log(err);
-    console.log(JSON.stringify(data));
+    console.log(JSON.stringify(data, null, 2));
     console.log('writing to ' + fileName);
   });
 
   res.status(204).send();
+})
+
+
+//emoji functions
+
+app.get('/posts/:id/emojis', (req, res) => {
+
+  res.json(data.posts[req.params.id-1].emojis)
+  
+})
+
+
+app.post('/posts/:postId/emojis/:emojiId', (req, res) => {
+  
+  let count = data.posts[req.params.postId-1].emojis[0];
+
+  if (req.params.emojiId === 'up') {
+
+    count.up += 1
+    
+  } else if (req.params.emojiId === 'down') {
+
+    count.down += 1 
+  
+  } else if (req.params.emojiId === 'favourite') {
+
+      count.favourite += 1
+
+  }
+
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(data, null, 2));
+    console.log('writing to ' + fileName);
+  });
+
+  res.status(201).send(count)
+
 })
 
 module.exports = app;

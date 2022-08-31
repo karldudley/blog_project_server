@@ -48,6 +48,17 @@ describe('api server', () => {
               "description": "text",
               "content": "text",
               "gif": "url",
+              "emojiCount": [
+                {
+                  "up": 0
+                },
+                {
+                  "down": 0
+                },
+                {
+                  "favourite": 0
+                }
+              ],
               "comments": [
                   {
                     "id": "1",
@@ -102,7 +113,7 @@ describe('api server', () => {
     .send (testPost)
     .set('Accept', /application\/json/)
     .expect(201)
-    .expect({id: '4', ...testPost, comments: []},done)
+    .expect({id: '4', ...testPost, emojiCount: [{up:0},{down:0},{favourite:0}], comments: []},done)
   })
 
   it('It responds to POST /posts/:id/comments with status 201', (done) => {
@@ -112,7 +123,7 @@ describe('api server', () => {
     .send (testComment)
     .set('Accept', /application\/json/)
     .expect(201)
-    .expect({id: '3', ...testComment},done)
+    .expect({id: '4', ...testComment},done)
 
   })
 
