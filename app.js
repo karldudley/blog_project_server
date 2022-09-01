@@ -65,7 +65,6 @@ app.delete('/posts/:id', (req, res) => {
 
   data.posts.splice(postIdx,1)
   
-  //Added by KD to refactor ID's after a deletion
   for (i=0; i<data.posts.length; i++){
       data.posts[i].id = (i+1).toString();
   }
@@ -126,6 +125,10 @@ app.delete('/posts/:postId/comments/:commentId', (req, res) => {
 
   data.posts[postIdx].comments.splice(commentIdx,1)
 
+  for (i=0; i<data.posts[postIdx].comments.length; i++){
+    data.posts[postIdx].comments[i].id = (i+1).toString();
+}
+
   fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
     if (err) return console.log(err);
     console.log(JSON.stringify(data, null, 2));
@@ -175,6 +178,34 @@ if (emojiId === 'up' || emojiId === 'down' || emojiId == 'favourite') {
   });
 
   res.status(201).send(count)
+
+})
+
+app.delete('/posts/:postId/emojis/:emojiId', (req, res) => {
+  
+  let count = data.posts[req.params.postId-1].emojis[0];
+  const emojiId = req.params.emojiId;
+
+if (emojiId === 'up' || emojiId === 'down' || emojiId == 'favourite') {
+  
+  if (emojiId === 'up') {
+
+    count.up -= 1
+    
+  } else if (emojiId === 'down') {
+
+    count.down -= 1 
+  
+  } else if (emojiId === 'favourite') {
+
+    count.favourite -= 1
+
+  }
+} else {
+    res.status(404).send({error: `Choose a between [up, down or favourite]`})
+  }
+
+  res.status(204).send()
 
 })
 

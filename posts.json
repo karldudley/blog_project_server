@@ -5,41 +5,6 @@
   "posts": [
     {
       "id": "1",
-      "title": "Hello World",
-      "description": "text",
-      "content": "text",
-      "gif": "url",
-      "emojis": [
-        {
-          "up": 0,
-          "down": 0,
-          "favourite": 0
-        }
-      ],
-      "comments": [
-        {
-          "id": "1",
-          "comment": "text"
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "title": "Hello World",
-      "description": "text",
-      "content": "text",
-      "gif": "url",
-      "emojis": [
-        {
-          "up": 0,
-          "down": 0,
-          "favourite": 0
-        }
-      ],
-      "comments": []
-    },
-    {
-      "id": "3",
       "title": "newTitle",
       "description": "newDesc",
       "content": "newContent",
