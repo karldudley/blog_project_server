@@ -1,7 +1,7 @@
 const request = require('supertest')
 const app = require('../app')
 
-describe('api server', () => {
+describe('API server', () => {
 
   let api
 
@@ -40,16 +40,16 @@ describe('api server', () => {
             .expect(200,done)
   })
 
-  it('It retrieves a POST by id with 200 status', (done) => {
+  it('It retrieves a post by id with 200 status', (done) => {
         request(api)
             .get('/posts/1')
             .expect(200)
             .expect({
               "id": "1",
-              "title": "Hello World",
-              "description": "text",
-              "content": "text",
-              "gif": "url",
+              "title": "newTitle",
+              "description": "newDesc",
+              "content": "newContent",
+              "gif": "newGif",
               "emojis": [
                 {
                   "up": 0,
@@ -103,7 +103,7 @@ describe('api server', () => {
     .send (testPost)
     .set('Accept', /application\/json/)
     .expect(201)
-    .expect({id: '3', ...testPost, emojis: [{up:0,down:0,favourite:0}], comments: []},done)
+    .expect({id: '4', ...testPost, emojis: [{up:0,down:0,favourite:0}], comments: []},done)
   })
 
   it('It responds to POST /posts/:id/comments with status 201', (done) => {
@@ -124,6 +124,13 @@ describe('api server', () => {
     .delete('/posts/1')
     .expect(204,done)
  })
+
+ it('It responds to GET /post/:id with status 201 and first', (done) => {
+
+  request (api)
+  .delete('/posts/1')
+  .expect(204,done)
+})
 
  it('It responds to DELETE /post/:id/comments/:id with status 204', (done) => {
 

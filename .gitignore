@@ -3,3 +3,6 @@ prototype.js
 prototype.json
 comments.json
 appTest.js
+serverTest.js
+
+functions.spec.js
