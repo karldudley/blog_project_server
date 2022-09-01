@@ -199,7 +199,7 @@ describe('API server', () => {
     
     })
 
-    it('It responds to DELETE /posts/:id/emojis/up with status 204 and count = 1', (done) => {
+    it('It responds to DELETE /posts/:id/emojis/up with status 204', (done) => {
 
       request(api)
       .delete('/posts/2/emojis/up')
@@ -208,7 +208,7 @@ describe('API server', () => {
 
     })
 
-    it('It responds to DELETE /posts/:id/emojis/down with status 204 and count = 1', (done) => {
+    it('It responds to DELETE /posts/:id/emojis/down with status 204', (done) => {
 
       request(api)
       .delete('/posts/2/emojis/down')
@@ -217,7 +217,7 @@ describe('API server', () => {
 
     })
 
-    it('It responds to DELETE /posts/:id/emojis/favourite with status 204 and count = 1', (done) => {
+    it('It responds to DELETE /posts/:id/emojis/favourite with status 204', (done) => {
 
       request(api)
       .delete('/posts/2/emojis/favourite')
