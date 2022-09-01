@@ -71,7 +71,7 @@ app.get('/posts/:id', (req, res) => {
       }
     })
   ```
-All those features were essential to guarantee client would have access to all resources due to acchieve the planned result.
+All those features were essential to guarantee client would have access to all resources due to achieve the planned result.
 
 ### **Test Results**
 
