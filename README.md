@@ -20,7 +20,7 @@ The [deployed server](https://granny-smith-server.herokuapp.com/) can be accesse
 
 As all data would be stored on server it was clear that the server itself would be responsible to embed all functions that permit client to *Access, Retrieve, Create and Delete* data from database. That is, an *API*. 
 
-Considering all functionalities we wanted in out website and working together, front and back decided the basic data structure would be as demonstrated below. For the present project, it was also agreed that only one json file would suffice to storage all required data.
+Considering all functionalities we wanted on out website and working together, front and back decided the basic data structure would be as demonstrated below. For the present project, it was also agreed that only one json file would suffice to storage all required data.
 
 ```json
 {
