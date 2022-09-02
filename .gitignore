@@ -6,3 +6,10 @@ appTest.js
 serverTest.js
 
 functions.spec.js
+
+express.png
+secondday.png
+coverage/
+
+
+__tests__/

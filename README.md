@@ -87,7 +87,7 @@ By the end of the project as you may see bellow, we have achieved a great result
 
 ![Jest Test Results](images/test_results.PNG)
 
-### **Challenges and Wins**
+### **Wins and Challenges**
 
 Everytime a post or comment created or deleted from website will be updated on our database. Everytime an emoji is clicked or unclicked it will be counted. With this we prevented client to crash trying to retrieve unexisting post id after deletion. We also prevent posts or comments to be stored with same id value. Below is an example of delete function which contains an for loop that processes and update the posts id's.
 

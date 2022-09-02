@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+
 const fs = require('fs');
 
 app.use(cors())
 app.use(express.json())
 
-const fileName = './posts.json'
-const data = require('./posts.json')
+const fileName = './prototype.json'
+const data = require('./prototype.json')
 
 
 app.get('/', (req, res) => {
@@ -205,13 +206,13 @@ if (emojiId === 'up' || emojiId === 'down' || emojiId == 'favourite') {
     res.status(404).send({error: `Choose a between [up, down or favourite]`})
   }
 
-  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
-    if (err) return console.log(err);
-    console.log(JSON.stringify(data, null, 2));
-    console.log('writing to ' + fileName);
-  });
+  // fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
+  //   if (err) return console.log(err);
+  //   console.log(JSON.stringify(data, null, 2));
+  //   console.log('writing to ' + fileName);
+  // });
 
-  res.status(204).send()
+  res.status(204).send(count)
 
 })
 
