@@ -45,9 +45,7 @@ app.post('/posts', (req, res) => {
 
 
     let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, emojis: emojis, comments: comments}
-
-    // {"id": "newPostId", "title": "newTitle", "description": "newDesc", "content": "newContent", "gif": "newGif"}
-
+    
     data.posts.push(newPost)
     
     fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
