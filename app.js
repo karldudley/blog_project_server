@@ -45,7 +45,7 @@ app.post('/posts', (req, res) => {
 
 
     let newPost = {id: newPostId, title: newTitle, description: newDesc, content: newContent, gif: newGif, emojis: emojis, comments: comments}
-    
+
     data.posts.push(newPost)
     
     fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
@@ -204,11 +204,11 @@ if (emojiId === 'up' || emojiId === 'down' || emojiId == 'favourite') {
     res.status(404).send({error: `Choose a between [up, down or favourite]`})
   }
 
-  // fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
-  //   if (err) return console.log(err);
-  //   console.log(JSON.stringify(data, null, 2));
-  //   console.log('writing to ' + fileName);
-  // });
+  fs.writeFile(fileName, JSON.stringify(data, null, 2), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(data, null, 2));
+    console.log('writing to ' + fileName);
+  });
 
   res.status(204).send(count)
 
