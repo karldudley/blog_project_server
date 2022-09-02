@@ -5,11 +5,11 @@ comments.json
 appTest.js
 serverTest.js
 
-functions.spec.js
 
 express.png
 secondday.png
 coverage/
 
+app.spec.js
 
-__tests__/
+__tests__
